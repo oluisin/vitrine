@@ -203,13 +203,34 @@ dialog[open]::backdrop{animation:fadeIn .3s ease}
 .trust .stars{color:var(--gold);letter-spacing:1px;font-size:15px;line-height:1}
 .trust-txt{font-size:14px}.trust-txt b{color:var(--gold);font-size:15px}
 .trust-go{font-size:12px;font-weight:600;color:var(--cyan)}
+
+/* Marca: logo oficial no topo */
+.logo{align-items:center;gap:10px}
+.logo-img{width:38px;height:38px;border-radius:50%;flex:none;box-shadow:0 0 0 1px var(--line)}
+.logo-txt{font-size:17px;letter-spacing:.06em;white-space:nowrap}
+.logo-txt b{color:var(--brand-a)} .logo-txt span{color:var(--brand-b)}
+@media (max-width:379px){.logo-txt{display:none}}
+.hero{text-align:center;padding-top:30px}
+.hero p{margin-inline:auto}
+.badge{position:relative;isolation:isolate;overflow:hidden;width:148px;height:148px;margin:0 auto 18px;border-radius:50%;padding:5px;
+  box-shadow:0 0 38px -6px color-mix(in srgb,var(--cyan) 55%,transparent),0 0 60px -10px color-mix(in srgb,var(--pink) 50%,transparent);
+  animation:rise .7s cubic-bezier(.2,.8,.2,1) both,float 5s ease-in-out .7s infinite,halo 6s ease-in-out infinite}
+.badge::before{content:"";position:absolute;z-index:-1;inset:-25%;
+  background:conic-gradient(var(--pink),var(--gold),var(--cyan),#7a5cff,var(--pink));animation:spin 3.5s linear infinite}
+.badge img{display:block;width:100%;height:100%;border-radius:50%;border:3px solid var(--bg)}
+@keyframes spin{to{transform:rotate(1turn)}}
+@keyframes float{50%{translate:0 -6px}}
+@keyframes halo{0%,100%{box-shadow:0 0 38px -6px color-mix(in srgb,var(--cyan) 60%,transparent),0 0 60px -10px color-mix(in srgb,var(--pink) 45%,transparent)}
+  50%{box-shadow:0 0 42px -6px color-mix(in srgb,var(--pink) 65%,transparent),0 0 64px -10px color-mix(in srgb,var(--gold) 40%,transparent)}}
+@media (min-width:700px){.badge{width:168px;height:168px}}
+:root{--brand-a:var(--pink);--brand-b:var(--cyan)}
 </style>
 </head>
 <body>
 
 <header class="top">
   <div class="wrap">
-    <a class="logo" href="#topo" aria-label="Print Lab"><b>PRINT</b><span>LAB</span></a>
+    <a class="logo" href="#topo" aria-label="Print Lab, voltar ao topo"><img class="logo-img" src="img/logo/logo-tema-96.png" width="38" height="38" alt=""><span class="logo-txt"><b>PRINT</b> <span>LAB</span></span></a>
     <nav class="topnav" aria-label="Atalhos"><a class="chip" href="#atelie">Encomendas</a><a class="chip" href="#como-comprar">Como comprar</a></nav>
   </div>
 </header>
@@ -217,6 +238,7 @@ dialog[open]::backdrop{animation:fadeIn .3s ease}
 <main id="topo">
   <div class="wrap">
     <section class="hero">
+      <div class="badge" aria-hidden="true"><img src="img/logo/logo-tema-512.png" srcset="img/logo/logo-tema-256.png 256w, img/logo/logo-tema-512.png 512w" sizes="148px" width="148" height="148" alt="" fetchpriority="high"></div>
       <div class="eyebrow">Impressão 3D feita por nós</div>
       <h1>Peças que dão <em>vida</em> à sua casa</h1>
       <p>Decoração, organização e presentes. Escolha o produto, chame no WhatsApp com o pedido pronto e pague no Pix.</p>
