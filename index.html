@@ -212,16 +212,15 @@ dialog[open]::backdrop{animation:fadeIn .3s ease}
 @media (max-width:379px){.logo-txt{display:none}}
 .hero{text-align:center;padding-top:30px}
 .hero p{margin-inline:auto}
-.brand-ring{position:relative;isolation:isolate;overflow:hidden;width:148px;height:148px;margin:0 auto 18px;border-radius:50%;padding:5px;
-  box-shadow:0 0 38px -6px color-mix(in srgb,var(--cyan) 55%,transparent),0 0 60px -10px color-mix(in srgb,var(--pink) 50%,transparent);
-  animation:rise .7s cubic-bezier(.2,.8,.2,1) both,ringFloat 5s ease-in-out .7s infinite,ringHalo 6s ease-in-out infinite}
-.brand-ring::before{content:"";position:absolute;z-index:-1;inset:-25%;
+.brand-ring{position:relative;isolation:isolate;width:148px;height:148px;margin:0 auto 18px;border-radius:50%;padding:5px;
+  animation:rise .7s cubic-bezier(.2,.8,.2,1) both,ringFloat 5s ease-in-out .7s infinite}
+.brand-ring::before,.brand-ring::after{content:"";position:absolute;inset:0;border-radius:50%;
   background:conic-gradient(var(--pink),var(--gold),var(--cyan),#7a5cff,var(--pink));animation:ringSpin 3.5s linear infinite}
-.brand-ring img{display:block;width:100%;height:100%;border-radius:50%;border:3px solid var(--bg)}
+.brand-ring::before{z-index:-1}
+.brand-ring::after{z-index:-2;inset:-6px;filter:blur(18px);opacity:.6}
+.brand-ring img{position:relative;display:block;width:100%;height:100%;border-radius:50%;border:3px solid var(--bg)}
 @keyframes ringSpin{to{transform:rotate(1turn)}}
 @keyframes ringFloat{50%{translate:0 -6px}}
-@keyframes ringHalo{0%,100%{box-shadow:0 0 38px -6px color-mix(in srgb,var(--cyan) 60%,transparent),0 0 60px -10px color-mix(in srgb,var(--pink) 45%,transparent)}
-  50%{box-shadow:0 0 42px -6px color-mix(in srgb,var(--pink) 65%,transparent),0 0 64px -10px color-mix(in srgb,var(--gold) 40%,transparent)}}
 @media (min-width:700px){.brand-ring{width:168px;height:168px}}
 :root{--brand-a:var(--pink);--brand-b:var(--cyan)}
 </style>
@@ -230,7 +229,7 @@ dialog[open]::backdrop{animation:fadeIn .3s ease}
 
 <header class="top">
   <div class="wrap">
-    <a class="logo" href="#topo" aria-label="Print Lab, voltar ao topo"><img class="logo-img" src="img/logo/logo-tema-96.png" width="38" height="38" alt=""><span class="logo-txt"><b>PRINT</b> <span>LAB</span></span></a>
+    <a class="logo" href="#topo" aria-label="Print Lab, voltar ao topo"><img class="logo-img" src="img/logo/logo-tema.svg" width="38" height="38" alt=""><span class="logo-txt"><b>PRINT</b> <span>LAB</span></span></a>
     <nav class="topnav" aria-label="Atalhos"><a class="chip" href="#atelie">Encomendas</a><a class="chip" href="#como-comprar">Como comprar</a></nav>
   </div>
 </header>
@@ -238,7 +237,7 @@ dialog[open]::backdrop{animation:fadeIn .3s ease}
 <main id="topo">
   <div class="wrap">
     <section class="hero">
-      <div class="brand-ring" aria-hidden="true"><img src="img/logo/logo-tema-512.png" srcset="img/logo/logo-tema-256.png 256w, img/logo/logo-tema-512.png 512w" sizes="148px" width="148" height="148" alt="" fetchpriority="high"></div>
+      <div class="brand-ring" aria-hidden="true"><img src="img/logo/logo-tema.svg" width="148" height="148" alt="" fetchpriority="high"></div>
       <div class="eyebrow">Impressão 3D feita por nós</div>
       <h1>Peças que dão <em>vida</em> à sua casa</h1>
       <p>Decoração, organização e presentes. Escolha o produto, chame no WhatsApp com o pedido pronto e pague no Pix.</p>
