@@ -194,6 +194,15 @@ dialog[open]::backdrop{animation:fadeIn .3s ease}
 .atelie-cta p{margin:0}
 .atelie-cta .alt{margin:0;text-align:left}
 @media (min-width:720px){.atelie-cta{grid-template-columns:1fr auto;align-items:center}.atelie-cta .btn{width:auto}.atelie-cta .alt{grid-column:1/-1}}
+
+/* ---------- selo de confiança ---------- */
+.trust{display:inline-flex;align-items:center;flex-wrap:wrap;gap:6px 10px;margin-top:16px;padding:9px 14px;border-radius:999px;text-decoration:none;color:var(--fg);
+  background:color-mix(in srgb,var(--gold) 10%,var(--surface));border:1px solid color-mix(in srgb,var(--gold) 45%,var(--line));
+  animation:rise .7s cubic-bezier(.2,.8,.2,1) .24s both;transition:border-color .2s,transform .2s}
+.trust:hover{border-color:var(--gold);transform:translateY(-1px)}
+.trust .stars{color:var(--gold);letter-spacing:1px;font-size:15px;line-height:1}
+.trust-txt{font-size:14px}.trust-txt b{color:var(--gold);font-size:15px}
+.trust-go{font-size:12px;font-weight:600;color:var(--cyan)}
 </style>
 </head>
 <body>
@@ -211,6 +220,11 @@ dialog[open]::backdrop{animation:fadeIn .3s ease}
       <div class="eyebrow">Impressão 3D feita por nós</div>
       <h1>Peças que dão <em>vida</em> à sua casa</h1>
       <p>Decoração, organização e presentes. Escolha o produto, chame no WhatsApp com o pedido pronto e pague no Pix.</p>
+      <a class="trust" href="https://shopee.com.br/oluisin" target="_blank" rel="noopener" aria-label="Nota 4,9 de 5 com 250 avaliações na Shopee. Ver a loja na Shopee">
+        <span class="stars" aria-hidden="true">★★★★★</span>
+        <span class="trust-txt"><b>4,9</b> na Shopee · 250 avaliações</span>
+        <span class="trust-go" aria-hidden="true">ver loja ›</span>
+      </a>
     </section>
 
     <nav class="filters" aria-label="Categorias" id="filters"></nav>
