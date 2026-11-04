@@ -163,6 +163,8 @@ dialog[open]::backdrop{animation:fadeIn .3s ease}
 
 /* ---------- ateliê / carrossel ---------- */
 .topnav{display:flex;gap:6px}
+.topnav .chip{font-size:12px;font-weight:700;letter-spacing:.04em;padding:6px 11px;border:0;background:var(--gold);color:var(--on-accent);transition:transform .2s,box-shadow .2s}
+.topnav .chip:hover,.topnav .chip:focus-visible{color:var(--on-accent);transform:translateY(-1px);box-shadow:0 4px 14px -4px color-mix(in srgb,var(--gold) 70%,transparent)}
 .atelie .eyebrow{margin-bottom:6px}
 .atelie-lead{color:var(--muted);max-width:60ch;margin:-6px 0 18px}
 .carousel{position:relative;margin-inline:calc(-1 * max(16px,env(safe-area-inset-left,0px)));--w:min(76vw,360px)}
