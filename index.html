@@ -175,7 +175,9 @@ dialog[open]::backdrop{animation:fadeIn .3s ease}
   transform:scale(.88) rotate(var(--tilt,0deg));opacity:.5;filter:saturate(.7);
   transition:transform .5s cubic-bezier(.2,.8,.2,1),opacity .5s,filter .5s,box-shadow .5s}
 .slide:nth-child(odd){--tilt:-2deg}.slide:nth-child(even){--tilt:2deg}
-.slide img{width:100%;height:100%;object-fit:cover;display:block;transition:transform 6s ease}
+.slide img,.slide video{width:100%;height:100%;object-fit:cover;display:block;transition:transform 6s ease}
+.slide.is-active video{transform:none}
+.vid-ico{position:absolute;right:12px;top:12px;width:30px;height:30px;border-radius:50%;display:grid;place-items:center;font-size:12px;padding-left:2px;color:#fff;background:color-mix(in srgb,var(--bg) 60%,transparent);border:1px solid color-mix(in srgb,#fff 35%,transparent);pointer-events:none}
 .slide::after{content:"";position:absolute;inset:0;border-radius:inherit;padding:2px;pointer-events:none;
   background:linear-gradient(140deg,var(--pink),var(--cyan) 55%,var(--gold));opacity:0;transition:opacity .5s;
   -webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask-composite:exclude}
@@ -556,13 +558,16 @@ footer .wrap{display:flex;flex-direction:column;align-items:center}
 
   // ---------- ateliê: carrossel ----------
   (function(){
-    const PICS=[1,7,8,9,2,3,4,5,6].map(n=>`img/atelie-${n}.jpg`);
+    // ordem: peças sem personagem licenciado primeiro; "v" = vídeo (toca quando o slide está ativo)
+    const PICS=[1,"v:lua",10,8,15,14,12,3,9,2,13,4,5,6].map(n=>typeof n==="string"?{video:`img/atelie-${n.slice(2)}.mp4`,poster:`img/atelie-${n.slice(2)}.jpg`}:{src:`img/atelie-${n}.jpg`});
     const track=document.getElementById("track"), dots=document.getElementById("dots");
-    PICS.forEach((src,i)=>{
-      const f=document.createElement("figure"); f.className="slide"; f.setAttribute("aria-label",`Foto ${i+1} de ${PICS.length}`);
-      f.innerHTML=`<img src="${src}" alt="Peça impressa e pintada à mão pela Print Lab" ${i>1?'loading="lazy"':''}>`;
+    PICS.forEach((m,i)=>{
+      const f=document.createElement("figure"); f.className="slide"; f.setAttribute("aria-label",`${m.video?"Vídeo":"Foto"} ${i+1} de ${PICS.length}`);
+      f.innerHTML=m.video
+        ?`<video src="${m.video}" poster="${m.poster}" muted playsinline preload="none" aria-label="Vídeo de peça feita pela Print Lab"></video><span class="vid-ico" aria-hidden="true">▶</span>`
+        :`<img src="${m.src}" alt="Peça feita pela Print Lab" ${i>1?'loading="lazy"':''}>`;
       track.appendChild(f);
-      const d=document.createElement("button"); d.type="button"; d.setAttribute("role","tab"); d.setAttribute("aria-label",`Ver foto ${i+1}`);
+      const d=document.createElement("button"); d.type="button"; d.setAttribute("role","tab"); d.setAttribute("aria-label",`Ver ${m.video?"vídeo":"foto"} ${i+1}`);
       d.addEventListener("click",()=>{go(i);stop()}); dots.appendChild(d);
     });
     const slides=[...track.children];
@@ -571,7 +576,10 @@ footer .wrap{display:flex;flex-direction:column;align-items:center}
       slides.forEach((sl,k)=>{const c=sl.offsetLeft+sl.offsetWidth/2,d=Math.abs(c-mid);if(d<dist){dist=d;best=k}});return best};
     const go=i=>{const n=slides.length;i=(i+n)%n;const sl=slides[i];
       track.scrollTo({left:sl.offsetLeft-(track.clientWidth-sl.offsetWidth)/2,behavior:reduce?"auto":"smooth"})};
-    const mark=()=>{const c=cur();slides.forEach((sl,k)=>sl.classList.toggle("is-active",k===c));
+    const mark=()=>{const c=cur();slides.forEach((sl,k)=>{sl.classList.toggle("is-active",k===c);
+        const v=sl.querySelector("video"); if(!v) return;
+        if(k===c){ if(v.paused&&!v.ended&&!v.dataset.on){v.dataset.on="1";v.currentTime=0;v.play().catch(()=>{})} }
+        else if(v.dataset.on){delete v.dataset.on;v.pause()} });
       [...dots.children].forEach((d,k)=>d.setAttribute("aria-selected",String(k===c)))};
     let raf=0; track.addEventListener("scroll",()=>{cancelAnimationFrame(raf);raf=requestAnimationFrame(mark)},{passive:true});
     slides.forEach((sl,k)=>sl.addEventListener("click",()=>{if(!sl.classList.contains("is-active")){go(k);stop()}}));
@@ -581,11 +589,15 @@ footer .wrap{display:flex;flex-direction:column;align-items:center}
     document.getElementById("c-next").addEventListener("click",()=>{go(cur()+1);stop()});
     // avanço automático suave; para quando a pessoa interage ou prefere menos movimento
     let timer=null;
-    function start(){ if(reduce||timer) return; timer=setInterval(()=>{ if(!document.hidden) go(cur()+1) },4000) }
+    function start(){ if(reduce||timer) return; timer=setInterval(()=>{ if(document.hidden) return; const v=slides[cur()].querySelector("video"); if(v&&v.dataset.on&&!v.ended) return; go(cur()+1) },4000) }
     function stop(){ clearInterval(timer); timer=null }
     const car=document.getElementById("carousel");
     car.addEventListener("pointerenter",stop); car.addEventListener("pointerleave",start);
     track.addEventListener("touchstart",stop,{passive:true});
+    track.querySelectorAll("video").forEach(v=>{
+      v.addEventListener("ended",()=>{ if(timer) go(cur()+1); else {v.currentTime=0;v.play().catch(()=>{})} });
+      v.addEventListener("click",()=>{ if(v.paused){v.play().catch(()=>{})} else v.pause() });
+    });
     start();
     document.getElementById("encomenda").href=`https://wa.me/${WA}?text=${encodeURIComponent("Oi! Vi a vitrine da Print Lab e quero fazer uma encomenda. Minha ideia é: ")}`;
   })();
