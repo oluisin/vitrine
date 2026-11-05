@@ -262,6 +262,19 @@ footer .wrap{display:flex;flex-direction:column;align-items:center}
 .faq details[open] summary::after{rotate:45deg}
 .faq p{margin:0;padding:0 16px 14px;color:var(--muted)}
 .faq a{color:var(--cyan)}
+
+/* Avaliações */
+.rev-track{display:flex;gap:12px;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;margin:14px -16px 0;padding:4px 16px 10px}
+.rev-track::-webkit-scrollbar{display:none}
+.rev{flex:0 0 min(80%,320px);scroll-snap-align:start;margin:0;padding:16px 16px 14px;border-radius:16px;border:1px solid var(--line);
+  background:linear-gradient(160deg,color-mix(in srgb,var(--gold) 7%,var(--surface)),var(--surface));display:flex;flex-direction:column;gap:10px}
+.rev-stars{color:var(--gold);letter-spacing:2px;font-size:15px}
+.rev blockquote{margin:0;flex:1;font-size:15px;line-height:1.5}
+.rev figcaption{display:flex;flex-direction:column;gap:2px;font-size:12px;color:var(--muted)}
+.rev figcaption b{color:var(--fg);font-size:13px}
+.rev-more{display:inline-block;margin-top:8px;color:var(--cyan);font-weight:600;font-size:14px;text-decoration:none}
+.rev-more:hover{text-decoration:underline}
+@media (min-width:900px){.rev{flex-basis:calc((100% - 36px)/4)}}
 :root{--brand-a:var(--pink);--brand-b:var(--cyan)}
 </style>
 </head>
@@ -282,9 +295,9 @@ footer .wrap{display:flex;flex-direction:column;align-items:center}
       <h1>Peças que dão <em>vida</em> à sua casa</h1>
       <p>Decoração, organização e presentes. Escolha o produto, chame no WhatsApp com o pedido pronto e pague no Pix.</p>
       <div class="hero-links">
-      <a class="trust" href="https://shopee.com.br/oluisin" target="_blank" rel="noopener" aria-label="Nota 4,9 de 5 com 250 avaliações na Shopee. Ver a loja na Shopee">
+      <a class="trust" href="https://shopee.com.br/oluisin" target="_blank" rel="noopener" aria-label="Nota 4,9 de 5 com mais de 250 avaliações na Shopee. Ver a loja na Shopee">
         <span class="stars" aria-hidden="true">★★★★★</span>
-        <span class="trust-txt"><b>4,9</b> na Shopee · 250 avaliações</span>
+        <span class="trust-txt"><b>4,9</b> na Shopee · +250 avaliações</span>
         <span class="trust-go" aria-hidden="true"><span class="tg-txt">ver loja </span>›</span>
       </a>
       <a class="ig-pill" href="https://www.instagram.com/oficial.printlab/" target="_blank" rel="noopener" aria-label="Seguir a Print Lab no Instagram, @oficial.printlab"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 7a5 5 0 1 0 0 10 5 5 0 0 0 0-10Zm0 8.2a3.2 3.2 0 1 1 0-6.4 3.2 3.2 0 0 1 0 6.4ZM17.3 5.5a1.2 1.2 0 1 0 0 2.4 1.2 1.2 0 0 0 0-2.4ZM12 2c-2.7 0-3.1 0-4.1.1-1.1 0-1.8.2-2.4.5-.7.3-1.2.6-1.8 1.2-.6.6-.9 1.1-1.2 1.8-.3.6-.5 1.3-.5 2.4C2 9 2 9.3 2 12s0 3.1.1 4.1c0 1.1.2 1.8.5 2.4.3.7.6 1.2 1.2 1.8.6.6 1.1.9 1.8 1.2.6.3 1.3.5 2.4.5 1 .1 1.4.1 4.1.1s3.1 0 4.1-.1c1.1 0 1.8-.2 2.4-.5.7-.3 1.2-.6 1.8-1.2.6-.6.9-1.1 1.2-1.8.3-.6.5-1.3.5-2.4.1-1 .1-1.4.1-4.1s0-3.1-.1-4.1c0-1.1-.2-1.8-.5-2.4-.3-.7-.6-1.2-1.2-1.8-.6-.6-1.1-.9-1.8-1.2-.6-.3-1.3-.5-2.4-.5C15.1 2 14.7 2 12 2Zm0 1.8c2.7 0 3 0 4 .1 1 0 1.5.2 1.8.3.5.2.8.4 1.2.8.4.4.6.7.8 1.2.1.3.3.8.3 1.8.1 1 .1 1.3.1 4s0 3-.1 4c0 1-.2 1.5-.3 1.8-.2.5-.4.8-.8 1.2-.4.4-.7.6-1.2.8-.3.1-.8.3-1.8.3-1 .1-1.3.1-4 .1s-3 0-4-.1c-1 0-1.5-.2-1.8-.3-.5-.2-.8-.4-1.2-.8-.4-.4-.6-.7-.8-1.2-.1-.3-.3-.8-.3-1.8-.1-1-.1-1.3-.1-4s0-3 .1-4c0-1 .2-1.5.3-1.8.2-.5.4-.8.8-1.2.4-.4.7-.6 1.2-.8.3-.1.8-.3 1.8-.3 1-.1 1.3-.1 4-.1Z"/></svg><span>@oficial.printlab</span></a>
@@ -293,6 +306,22 @@ footer .wrap{display:flex;flex-direction:column;align-items:center}
 
     <nav class="filters" aria-label="Categorias" id="filters"></nav>
     <div class="grid" id="grid"></div>
+
+    <section class="block reviews" id="avaliacoes" aria-labelledby="avaliacoes-t">
+      <div class="eyebrow">Avaliações reais da Shopee</div>
+      <h3 id="avaliacoes-t">Quem comprou, aprovou</h3>
+      <div class="rev-track" tabindex="0" aria-label="Avaliações de clientes">
+        <figure class="rev"><div class="rev-stars" aria-label="5 de 5 estrelas">★★★★★</div><blockquote>“Lindo! Muito bem feito, cor exatamente como eu pedi. Montagem é muito fácil e o jeito que é feita é muito firme, aguenta bastante peso. Impecável!”</blockquote><figcaption><b>l*****a</b><span>Kit 5 Ganchos de Parede · jul/2026</span></figcaption></figure>
+        <figure class="rev"><div class="rev-stars" aria-label="5 de 5 estrelas">★★★★★</div><blockquote>“São os ímãs mais fofos do mundo! Acabamento impecável”</blockquote><figcaption><b>l*****o</b><span>Ímãs Decorativos Amigurumi · set/2026</span></figcaption></figure>
+        <figure class="rev"><div class="rev-stars" aria-label="5 de 5 estrelas">★★★★★</div><blockquote>“Gostei do acabamento e o tamanho é perfeito para levar na bolsa ou no bolso. As cores condizem com o anúncio. Chegou antes do prazo e veio bem embalado.”</blockquote><figcaption><b>i*****d</b><span>Porta-Comprimidos Minimalista · mai/2026</span></figcaption></figure>
+        <figure class="rev"><div class="rev-stars" aria-label="5 de 5 estrelas">★★★★★</div><blockquote>“Tudo perfeito, conforme descrição. Comprei para o quarto da minha filha e ela amou!”</blockquote><figcaption><b>m*****_</b><span>Ganchos de Parede Infantil · ago/2026</span></figcaption></figure>
+        <figure class="rev"><div class="rev-stars" aria-label="5 de 5 estrelas">★★★★★</div><blockquote>“Eu estou apaixonada pelos imãs, eles são maiores do que eu imaginava... O vendedor foi muito atencioso, me mandou até mimo! Recomendo a todos!”</blockquote><figcaption><b>p*****6</b><span>Ímãs Decorativos Amigurumi · abr/2026</span></figcaption></figure>
+        <figure class="rev"><div class="rev-stars" aria-label="5 de 5 estrelas">★★★★★</div><blockquote>“Gostei muito mesmo!! Comprei pros meus filhos pendurarem o uniforme e os casacos quando voltarem da escola!! […] E esses ganchos me atenderam muito bem!!”</blockquote><figcaption><b>m*****r</b><span>Kit 5 Ganchos de Parede · ago/2026</span></figcaption></figure>
+        <figure class="rev"><div class="rev-stars" aria-label="5 de 5 estrelas">★★★★★</div><blockquote>“Amei!! Muito bem feito e divertido!!”</blockquote><figcaption><b>a*****r</b><span>Placa “The (home) Office” · dez/2025</span></figcaption></figure>
+        <figure class="rev"><div class="rev-stars" aria-label="5 de 5 estrelas">★★★★★</div><blockquote>“Eu amei minha compra 😍chegou antes do prazo, bem embaladinho, uma graça, super aprovado já que tenho 2 gatos e dois cachorros.”</blockquote><figcaption><b>m*****o</b><span>Ímãs Decorativos Amigurumi · dez/2025</span></figcaption></figure>
+      </div>
+      <a class="rev-more" href="https://shopee.com.br/oluisin" target="_blank" rel="noopener">Ver todas as avaliações na Shopee ›</a>
+    </section>
 
     <section class="block atelie" id="atelie" aria-labelledby="atelie-t">
       <div class="eyebrow">Do nosso ateliê</div>
