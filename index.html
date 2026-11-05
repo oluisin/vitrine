@@ -246,6 +246,7 @@ dialog[open]::backdrop{animation:fadeIn .3s ease}
 .ig-pill:hover{border-color:var(--pink);transform:translateY(-1px)}
 .ig-pill svg,.foot-ig svg{width:18px;height:18px;flex:none;color:var(--pink)}
 .btn-ig{margin-top:12px}.btn-ig svg{color:var(--pink)}
+.card-shopee a{background:#ee4d2d;color:#fff}
 .card-ig a{background:linear-gradient(90deg,var(--pink),#a855f7);color:#fff}
 .foot-ig{display:inline-flex;align-items:center;gap:6px;margin-top:10px;color:var(--fg);text-decoration:none;font-weight:600}
 .foot-ig:hover{color:var(--pink)}
@@ -264,7 +265,8 @@ footer .wrap{display:flex;flex-direction:column;align-items:center}
 .faq a{color:var(--cyan)}
 
 /* Avaliações */
-.rev-track{display:flex;gap:12px;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;margin:14px -16px 0;padding:4px 16px 10px}
+.rev-car{position:relative;margin-top:14px}
+.rev-track{display:flex;gap:12px;overflow-x:auto;scroll-snap-type:x mandatory;scroll-behavior:smooth;scrollbar-width:none;margin:0 -16px;padding:4px 16px 10px;scroll-padding-inline:16px}
 .rev-track::-webkit-scrollbar{display:none}
 .rev{flex:0 0 min(80%,320px);scroll-snap-align:start;margin:0;padding:16px 16px 14px;border-radius:16px;border:1px solid var(--line);
   background:linear-gradient(160deg,color-mix(in srgb,var(--gold) 7%,var(--surface)),var(--surface));display:flex;flex-direction:column;gap:10px}
@@ -274,7 +276,14 @@ footer .wrap{display:flex;flex-direction:column;align-items:center}
 .rev figcaption b{color:var(--fg);font-size:13px}
 .rev-more{display:inline-block;margin-top:8px;color:var(--cyan);font-weight:600;font-size:14px;text-decoration:none}
 .rev-more:hover{text-decoration:underline}
-@media (min-width:900px){.rev{flex-basis:calc((100% - 36px)/4)}}
+.rnav{position:absolute;top:50%;translate:0 -60%;z-index:2;width:44px;height:44px;border-radius:50%;border:1px solid var(--line);background:color-mix(in srgb,var(--bg) 80%,transparent);backdrop-filter:blur(6px);color:var(--fg);font:700 26px/1 var(--font);cursor:pointer;display:grid;place-items:center;padding-bottom:3px;transition:border-color .2s,scale .2s}
+.rnav:hover{border-color:var(--cyan);scale:1.08}
+.rnav:disabled{opacity:.3;cursor:default;scale:1}
+.rnav.prev{left:-22px}.rnav.next{right:-22px}
+.rev-dots{margin-top:6px}
+@media (max-width:699px){.rnav{display:none}}
+@media (min-width:700px){.rev-track{margin:0;padding:4px 2px 10px;scroll-padding-inline:2px}.rev{flex-basis:calc((100% - 12px)/2)}}
+@media (min-width:1000px){.rev{flex-basis:calc((100% - 24px)/3)}}
 :root{--brand-a:var(--pink);--brand-b:var(--cyan)}
 </style>
 </head>
@@ -310,16 +319,21 @@ footer .wrap{display:flex;flex-direction:column;align-items:center}
     <section class="block reviews" id="avaliacoes" aria-labelledby="avaliacoes-t">
       <div class="eyebrow">Avaliações reais da Shopee</div>
       <h3 id="avaliacoes-t">Quem comprou, aprovou</h3>
-      <div class="rev-track" tabindex="0" aria-label="Avaliações de clientes">
+      <div class="rev-car" id="rev-car" aria-roledescription="carrossel">
+      <div class="rev-track" id="rev-track" tabindex="0" aria-label="Avaliações de clientes">
         <figure class="rev"><div class="rev-stars" aria-label="5 de 5 estrelas">★★★★★</div><blockquote>“Lindo! Muito bem feito, cor exatamente como eu pedi. Montagem é muito fácil e o jeito que é feita é muito firme, aguenta bastante peso. Impecável!”</blockquote><figcaption><b>l*****a</b><span>Kit 5 Ganchos de Parede · jul/2026</span></figcaption></figure>
         <figure class="rev"><div class="rev-stars" aria-label="5 de 5 estrelas">★★★★★</div><blockquote>“São os ímãs mais fofos do mundo! Acabamento impecável”</blockquote><figcaption><b>l*****o</b><span>Ímãs Decorativos Amigurumi · set/2026</span></figcaption></figure>
         <figure class="rev"><div class="rev-stars" aria-label="5 de 5 estrelas">★★★★★</div><blockquote>“Gostei do acabamento e o tamanho é perfeito para levar na bolsa ou no bolso. As cores condizem com o anúncio. Chegou antes do prazo e veio bem embalado.”</blockquote><figcaption><b>i*****d</b><span>Porta-Comprimidos Minimalista · mai/2026</span></figcaption></figure>
-        <figure class="rev"><div class="rev-stars" aria-label="5 de 5 estrelas">★★★★★</div><blockquote>“Tudo perfeito, conforme descrição. Comprei para o quarto da minha filha e ela amou!”</blockquote><figcaption><b>m*****_</b><span>Ganchos de Parede Infantil · ago/2026</span></figcaption></figure>
+        <figure class="rev"><div class="rev-stars" aria-label="5 de 5 estrelas">★★★★★</div><blockquote>“Tudo perfeito, conforme descrição. Comprei para o quarto da minha filha e ela amou!”</blockquote><figcaption><b>m*****m</b><span>Ganchos de Parede Infantil · ago/2026</span></figcaption></figure>
         <figure class="rev"><div class="rev-stars" aria-label="5 de 5 estrelas">★★★★★</div><blockquote>“Eu estou apaixonada pelos imãs, eles são maiores do que eu imaginava... O vendedor foi muito atencioso, me mandou até mimo! Recomendo a todos!”</blockquote><figcaption><b>p*****6</b><span>Ímãs Decorativos Amigurumi · abr/2026</span></figcaption></figure>
         <figure class="rev"><div class="rev-stars" aria-label="5 de 5 estrelas">★★★★★</div><blockquote>“Gostei muito mesmo!! Comprei pros meus filhos pendurarem o uniforme e os casacos quando voltarem da escola!! […] E esses ganchos me atenderam muito bem!!”</blockquote><figcaption><b>m*****r</b><span>Kit 5 Ganchos de Parede · ago/2026</span></figcaption></figure>
         <figure class="rev"><div class="rev-stars" aria-label="5 de 5 estrelas">★★★★★</div><blockquote>“Amei!! Muito bem feito e divertido!!”</blockquote><figcaption><b>a*****r</b><span>Placa “The (home) Office” · dez/2025</span></figcaption></figure>
         <figure class="rev"><div class="rev-stars" aria-label="5 de 5 estrelas">★★★★★</div><blockquote>“Eu amei minha compra 😍chegou antes do prazo, bem embaladinho, uma graça, super aprovado já que tenho 2 gatos e dois cachorros.”</blockquote><figcaption><b>m*****o</b><span>Ímãs Decorativos Amigurumi · dez/2025</span></figcaption></figure>
       </div>
+        <button type="button" class="rnav prev" id="r-prev" aria-label="Avaliação anterior">‹</button>
+        <button type="button" class="rnav next" id="r-next" aria-label="Próxima avaliação">›</button>
+      </div>
+      <div class="dots rev-dots" id="r-dots" role="tablist" aria-label="Escolher avaliação"></div>
       <a class="rev-more" href="https://shopee.com.br/oluisin" target="_blank" rel="noopener">Ver todas as avaliações na Shopee ›</a>
     </section>
 
@@ -375,8 +389,8 @@ footer .wrap{display:flex;flex-direction:column;align-items:center}
         <div class="card-wa"><div><div class="who">WhatsApp</div><div class="nm">Atendimento 1</div></div><a href="https://wa.me/5521965922056" target="_blank" rel="noopener">Conversar</a></div>
         <div class="card-wa"><div><div class="who">WhatsApp</div><div class="nm">Atendimento 2</div></div><a href="https://wa.me/5521997534112" target="_blank" rel="noopener">Conversar</a></div>
         <div class="card-wa card-ig"><div><div class="who">Instagram</div><div class="nm">@oficial.printlab</div></div><a href="https://www.instagram.com/oficial.printlab/" target="_blank" rel="noopener">Seguir</a></div>
+        <div class="card-wa card-shopee"><div><div class="who">Shopee</div><div class="nm">Loja Print Lab</div></div><a href="https://shopee.com.br/oluisin" target="_blank" rel="noopener">Ver loja</a></div>
       </div>
-      <a class="btn btn-ghost shopee" href="https://shopee.com.br/oluisin" target="_blank" rel="noopener">Veja os produtos na Shopee</a>
     </section>
   </div>
 </main>
@@ -681,6 +695,27 @@ footer .wrap{display:flex;flex-direction:column;align-items:center}
     });
     start();
     document.getElementById("encomenda").href=`https://wa.me/${WA}?text=${encodeURIComponent("Oi! Vi a vitrine da Print Lab e quero fazer uma encomenda. Minha ideia é: ")}`;
+  })();
+
+  // ---------- avaliações: carrossel ----------
+  (function(){
+    const tr=document.getElementById("rev-track"); if(!tr) return;
+    const cards=[...tr.children], dots=document.getElementById("r-dots");
+    const prev=document.getElementById("r-prev"), next=document.getElementById("r-next");
+    const step=()=>cards[1].offsetLeft-cards[0].offsetLeft;
+    const idx=()=>Math.round(tr.scrollLeft/step());
+    const maxIdx=()=>Math.max(0,Math.round((tr.scrollWidth-tr.clientWidth)/step()));
+    const go=i=>{i=Math.max(0,Math.min(i,maxIdx()));tr.scrollTo({left:i*step()})};
+    cards.forEach((c,i)=>{const d=document.createElement("button");d.type="button";d.setAttribute("role","tab");d.setAttribute("aria-label",`Ver avaliação ${i+1}`);d.addEventListener("click",()=>{go(i);stop()});dots.appendChild(d)});
+    const mark=()=>{const i=idx(),m=maxIdx();[...dots.children].forEach((d,k)=>{d.hidden=k>m;d.setAttribute("aria-selected",String(k===i))});prev.disabled=i<=0;next.disabled=i>=m};
+    let raf=0; tr.addEventListener("scroll",()=>{cancelAnimationFrame(raf);raf=requestAnimationFrame(mark)},{passive:true});
+    addEventListener("resize",mark); mark();
+    prev.addEventListener("click",()=>{go(idx()-1);stop()}); next.addEventListener("click",()=>{go(idx()+1);stop()});
+    const reduce=window.matchMedia&&matchMedia("(prefers-reduced-motion: reduce)").matches;
+    let t=null; const start=()=>{if(reduce||t)return;t=setInterval(()=>{if(document.hidden)return;go(idx()>=maxIdx()?0:idx()+1)},5000)};
+    function stop(){clearInterval(t);t=null}
+    const car=document.getElementById("rev-car"); car.addEventListener("pointerenter",stop); car.addEventListener("pointerleave",start);
+    tr.addEventListener("touchstart",stop,{passive:true}); start();
   })();
   render();
   const fromHash=PRODUCTS.find(p=>"#"+p.id===location.hash);
