@@ -611,7 +611,7 @@ footer .wrap{display:flex;flex-direction:column;align-items:center}
   // ---------- ateliê: carrossel ----------
   (function(){
     // ordem: peças sem personagem licenciado primeiro; "v" = vídeo (toca quando o slide está ativo)
-    const PICS=[1,"v:lua",10,8,15,14,12,3,9,2,13,4,5,6].map(n=>typeof n==="string"?{video:`img/atelie-${n.slice(2)}.mp4`,poster:`img/atelie-${n.slice(2)}.jpg`}:{src:`img/atelie-${n}.jpg`});
+    const PICS=[22,"v:lua","v:gato",16,17,10,8,15,14,12,1,9,2,13,18,19,20,21,4,5,6].map(n=>typeof n==="string"?{video:`img/atelie-${n.slice(2)}.mp4`,poster:`img/atelie-${n.slice(2)}.jpg`}:{src:`img/atelie-${n}.jpg`});
     const track=document.getElementById("track"), dots=document.getElementById("dots");
     PICS.forEach((m,i)=>{
       const f=document.createElement("figure"); f.className="slide"; f.setAttribute("aria-label",`${m.video?"Vídeo":"Foto"} ${i+1} de ${PICS.length}`);
