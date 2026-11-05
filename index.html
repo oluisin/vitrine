@@ -3,14 +3,24 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<title>Vitrine Print Lab</title>
-<meta name="description" content="Peças impressas em 3D feitas pela Print Lab. Escolha o seu produto e peça pelo WhatsApp.">
-<meta property="og:title" content="Vitrine Print Lab">
-<meta property="og:description" content="Decoração, organização e presentes impressos em 3D. Peça pelo WhatsApp.">
-<meta property="og:image" content="https://lojaprintlab.com.br/img/kit-medidas.jpg">
+<title>Print Lab · Impressão 3D feita por nós</title>
+<meta name="description" content="Peças impressas em 3D feitas pela Print Lab: decoração, organização, presentes e encomendas personalizadas. Escolha o produto e peça pelo WhatsApp.">
+<link rel="canonical" href="https://lojaprintlab.com.br/">
+<meta property="og:site_name" content="Print Lab">
+<meta property="og:title" content="Print Lab · Impressão 3D feita por nós">
+<meta property="og:description" content="Decoração, organização, presentes e encomendas personalizadas impressas em 3D. Peça pelo WhatsApp.">
+<meta property="og:url" content="https://lojaprintlab.com.br/">
+<meta property="og:image" content="https://lojaprintlab.com.br/img/og.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Logo da Print Lab e peças impressas em 3D">
 <meta property="og:type" content="website">
+<meta property="og:locale" content="pt_BR">
+<meta name="twitter:card" content="summary_large_image">
 <meta name="theme-color" content="#0c0a12">
-<link rel="icon" href="favicon.png">
+<link rel="icon" href="img/logo/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="favicon.png" sizes="32x32" type="image/png">
+<link rel="apple-touch-icon" href="img/logo/apple-touch-icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap">
@@ -241,6 +251,17 @@ dialog[open]::backdrop{animation:fadeIn .3s ease}
 .foot-ig:hover{color:var(--pink)}
 @media (max-width:459px){.trust .tg-txt{display:none}.trust-go{font-size:18px;line-height:1}.trust{flex-wrap:nowrap}}
 footer .wrap{display:flex;flex-direction:column;align-items:center}
+
+/* Dúvidas frequentes */
+.faq{display:grid;gap:8px}
+.faq details{border:1px solid var(--line);border-radius:12px;background:var(--surface);transition:border-color .2s}
+.faq details[open]{border-color:color-mix(in srgb,var(--cyan) 50%,var(--line))}
+.faq summary{list-style:none;cursor:pointer;padding:14px 44px 14px 16px;font-weight:600;position:relative}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:"+";position:absolute;right:16px;top:50%;translate:0 -50%;font-size:22px;font-weight:500;color:var(--cyan);transition:rotate .2s}
+.faq details[open] summary::after{rotate:45deg}
+.faq p{margin:0;padding:0 16px 14px;color:var(--muted)}
+.faq a{color:var(--cyan)}
 :root{--brand-a:var(--pink);--brand-b:var(--cyan)}
 </style>
 </head>
@@ -301,6 +322,22 @@ footer .wrap{display:flex;flex-direction:column;align-items:center}
         <li><span class="num">2</span><div><b>Chame no WhatsApp</b><span>O botão abre a conversa com o seu pedido escrito.</span></div></li>
         <li><span class="num">3</span><div><b>Pague no Pix</b><span>Combinamos a retirada ou a entrega com você.</span></div></li>
       </ol>
+    </section>
+
+    <section class="block" id="duvidas" aria-labelledby="duvidas-t">
+      <h3 id="duvidas-t">Dúvidas frequentes</h3>
+      <div class="faq">
+        <details><summary>Qual o prazo para ficar pronto?</summary><p>Depende da peça e da quantidade. A gente informa o prazo na conversa, antes de você pagar.</p></details>
+        <details><summary>Como funciona a entrega em Niterói?</summary><p>Combinamos com você na conversa: retirada ou entrega, conforme o seu bairro e o pedido.</p></details>
+        <details><summary>Vocês enviam para outras cidades?</summary><p>Sim, pelos Correios ou pelo Melhor Envio. O frete é calculado pelo seu CEP e pago à parte.</p></details>
+        <details><summary>Como eu pago?</summary><p>Pelo Pix. Os detalhes a gente combina na conversa.</p></details>
+        <details><summary>Posso escolher a cor?</summary><p>Nos produtos com opções de cor, é só escolher na ficha do produto. Quer outra cor? Pergunte na conversa: vemos o filamento disponível.</p></details>
+        <details><summary>De que material são as peças?</summary><p>De PLA, um plástico de origem vegetal muito usado na impressão 3D. As peças são rígidas, mesmo as que imitam tricô ou outros materiais.</p></details>
+        <details><summary>Como cuidar da peça?</summary><p>Evite sol forte, carro fechado e água quente, porque o calor pode deformar o PLA. Para limpar, use um pano macio ou levemente úmido.</p></details>
+        <details><summary>As peças são brinquedos?</summary><p>Não. As peças decorativas não são brinquedos. As que têm partes pequenas devem ficar longe de crianças pequenas.</p></details>
+        <details><summary>Vocês fazem peças personalizadas?</summary><p>Sim. Veja a seção <a href='#atelie'>Encomendas</a> e mande sua ideia com fotos de referência.</p></details>
+        <details><summary>Também vendem pela Shopee?</summary><p>Sim. Se preferir comprar com a garantia da plataforma, <a href='https://shopee.com.br/oluisin' target='_blank' rel='noopener'>veja a nossa loja na Shopee</a>.</p></details>
+      </div>
     </section>
 
     <section class="block" id="contato">
@@ -505,6 +542,20 @@ footer .wrap{display:flex;flex-direction:column;align-items:center}
   // ficha
   const dlg=document.getElementById("sheet");
   const $=id=>document.getElementById(id);
+  // ---------- contagem de visitas e cliques (Umami, sem cookies) ----------
+  // Preencha UMAMI_ID com o "Website ID" do painel do Umami. Vazio = nada é carregado nem contado.
+  const UMAMI_ID="";
+  if(UMAMI_ID){const sc=document.createElement("script");sc.defer=true;sc.src="https://cloud.umami.is/script.js";sc.dataset.websiteId=UMAMI_ID;sc.dataset.domains="lojaprintlab.com.br";document.head.appendChild(sc)}
+  function track(ev,data){try{window.umami&&window.umami.track(ev,data)}catch(e){}}
+  document.addEventListener("click",e=>{
+    const a=e.target.closest("a"); if(!a) return; const h=a.href||"";
+    if(a.id==="d-order"&&state.p){const o=state.p.options[state.o]||{};track("pedido-whatsapp",{produto:state.p.name,opcao:o.n||"",valor:o.p||0});}
+    else if(a.id==="encomenda") track("encomenda-whatsapp");
+    else if(h.includes("wa.me")) track("conversar-whatsapp",{atendimento:a.closest(".card-wa")?.querySelector(".nm")?.textContent||""});
+    else if(h.includes("instagram.com")) track("instagram",{local:a.className||"contato"});
+    else if(h.includes("shopee.com.br")) track("shopee",{local:a.id||a.className||""});
+  });
+
   let state={};
   function showPhoto(i){
     const f=state.p.photos[i]; const im=$("d-img"); im.classList.remove("swap"); void im.offsetWidth; im.classList.add("swap"); im.src=photoSrc(f); $("d-img").alt=state.p.name;
@@ -531,6 +582,7 @@ footer .wrap{display:flex;flex-direction:column;align-items:center}
   }
   function open(p){
     state={p,o:0,c:null};
+    track("abriu-produto",{produto:p.name});
     $("d-title").textContent=p.name; $("d-lead").textContent=p.lead;
     $("d-shopee").parentElement.hidden=!p.shopee; if(p.shopee) $("d-shopee").href=p.shopee;
     const th=$("d-thumbs"); th.innerHTML=""; th.hidden=p.photos.length<2;
