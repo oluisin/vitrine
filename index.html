@@ -544,7 +544,7 @@ footer .wrap{display:flex;flex-direction:column;align-items:center}
   const $=id=>document.getElementById(id);
   // ---------- contagem de visitas e cliques (Umami, sem cookies) ----------
   // Preencha UMAMI_ID com o "Website ID" do painel do Umami. Vazio = nada é carregado nem contado.
-  const UMAMI_ID="";
+  const UMAMI_ID="6e932307-6287-4577-b73a-48cdc4cbda16";
   if(UMAMI_ID){const sc=document.createElement("script");sc.defer=true;sc.src="https://cloud.umami.is/script.js";sc.dataset.websiteId=UMAMI_ID;sc.dataset.domains="lojaprintlab.com.br";document.head.appendChild(sc)}
   function track(ev,data){try{window.umami&&window.umami.track(ev,data)}catch(e){}}
   document.addEventListener("click",e=>{
